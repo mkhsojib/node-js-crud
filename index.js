@@ -4,11 +4,23 @@ const express = require('express');
 const app = express();
 
 
+// how middleware works
+
+app.use(function (req, res, next) {
+  // console.log('Time:', Date.now())
+  req.name = 'mkh sojib'
+  next()
+})
+
+
 // index route
 
 app.get('/', (req, res)=>{
 
-res.send('this is index');
+console.log(req.name);
+
+
+res.send(req.name);
 
 });
 
@@ -18,7 +30,7 @@ res.send('this is index');
 
 app.get('/about', (req, res)=>{
 
-res.send('this is about page');
+res.send('this is about ');
 
 })
 
