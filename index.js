@@ -1,6 +1,6 @@
 const express = require('express');
 
-const exphbs  = require('express-handlebars');
+const exphbs = require('express-handlebars');
 
 
 const app = express();
@@ -10,8 +10,8 @@ const app = express();
 // Handlebars Middleware
 
 app.engine('handlebars', exphbs({
-  
-defaultLayout: 'main'
+
+  defaultLayout: 'main'
 
 }));
 app.set('view engine', 'handlebars');
@@ -21,13 +21,13 @@ app.set('view engine', 'handlebars');
 
 // index route
 
-app.get('/', (req, res)=>{
+app.get('/', (req, res) => {
 
   const title = 'Welcome Index Page';
 
-res.render('index', {
-  title : title
-});
+  res.render('index', {
+    title: title
+  });
 
 });
 
@@ -35,9 +35,14 @@ res.render('index', {
 
 // about route
 
-app.get('/about', (req, res)=>{
+app.get('/about', (req, res) => {
 
-res.render('about');
+  const about = 'About US Page'
+
+  res.render('about', {
+
+    about: about
+  });
 
 })
 
@@ -45,7 +50,7 @@ res.render('about');
 
 const port = 5000;
 
-app.listen(port, ()=>{
+app.listen(port, () => {
 
   console.log(`Server started on port ${port}`);
 
