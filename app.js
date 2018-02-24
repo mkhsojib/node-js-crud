@@ -18,8 +18,8 @@ mongoose.connect('mongodb://localhost/video-dev', {
   useMongoClient: true
 })
 
-.then(() => console.log('MongoDB Connected ....'))
-.catch(err => console.log(err));
+  .then(() => console.log('MongoDB Connected ....'))
+  .catch(err => console.log(err));
 
 // Load Idea Model
 
@@ -64,6 +64,15 @@ app.get('/about', (req, res) => {
 
     about: about
   });
+
+})
+
+
+// add video form
+
+app.get('/ideas/add', (req, res) => {
+
+  res.render('ideas/add');
 
 })
 
