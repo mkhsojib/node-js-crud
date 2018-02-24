@@ -113,9 +113,22 @@ app.post('/ideas', (req, res) => {
 
   }
 
- else{
-   res.send('passed')
- }
+  else {
+
+    const newUser = {
+      title : req.body.title,
+      details : req.body.details
+    }
+    new Idea(newUser)
+    
+    .save()
+    .then(idea => {
+      res.redirect('/ideas');
+    })
+   }
+
+
+   
 
 })
 
