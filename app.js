@@ -75,6 +75,23 @@ app.get('/about', (req, res) => {
 })
 
 
+// idea page index
+
+app.get('/ideas', (req, res) => {
+
+  Idea.find({})
+  .sort({date:'desc'})
+  .then(ideas => {
+    res.render('ideas/index', {
+      ideas:ideas
+    })
+  })
+
+
+
+})
+
+
 // add video form
 
 app.get('/ideas/add', (req, res) => {
@@ -116,19 +133,19 @@ app.post('/ideas', (req, res) => {
   else {
 
     const newUser = {
-      title : req.body.title,
-      details : req.body.details
+      title: req.body.title,
+      details: req.body.details
     }
     new Idea(newUser)
-    
-    .save()
-    .then(idea => {
-      res.redirect('/ideas');
-    })
-   }
+
+      .save()
+      .then(idea => {
+        res.redirect('/ideas');
+      })
+  }
 
 
-   
+
 
 })
 
