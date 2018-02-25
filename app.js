@@ -80,12 +80,30 @@ app.get('/about', (req, res) => {
 app.get('/ideas', (req, res) => {
 
   Idea.find({})
-  .sort({date:'desc'})
-  .then(ideas => {
-    res.render('ideas/index', {
-      ideas:ideas
+    .sort({ date: 'desc' })
+    .then(ideas => {
+      res.render('ideas/index', {
+        ideas: ideas
+      })
     })
-  })
+
+
+
+})
+
+
+
+// idea page edit
+
+app.get('/ideas', (req, res) => {
+
+  Idea.find({})
+    .sort({ date: 'desc' })
+    .then(ideas => {
+      res.render('ideas/index', {
+        ideas: ideas
+      })
+    })
 
 
 
@@ -97,6 +115,22 @@ app.get('/ideas', (req, res) => {
 app.get('/ideas/add', (req, res) => {
 
   res.render('ideas/add');
+
+})
+
+// edit video form
+
+app.get('/ideas/edit/:id', (req, res) => {
+
+  Idea.findOne({
+    _id: req.params.id
+  })
+    .then(idea => {
+      res.render('ideas/edit', {
+        idea: idea
+      });
+
+    })
 
 })
 
