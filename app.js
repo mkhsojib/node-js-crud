@@ -217,6 +217,20 @@ app.put('/ideas/:id', (req, res) => {
 })
 
 
+// delete form process
+
+app.delete('/ideas/:id', (req, res) => {
+
+  Idea.remove({ _id: req.params.id })
+
+    .then(() => {
+
+      res.redirect('/ideas')
+    })
+
+})
+
+
 
 const port = 5000;
 
